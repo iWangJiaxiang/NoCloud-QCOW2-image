@@ -7,14 +7,14 @@ echo "=> [3/6] Docker Installation"
 apt-get update
 apt-get -y install ca-certificates curl gnupg
 
-# Add Docker's official GPG key via Tuna mirror
+# Add Docker's official GPG key
 install -m 0755 -d /etc/apt/keyrings
-curl -fsSL https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/debian/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 chmod a+r /etc/apt/keyrings/docker.gpg
 
 # Set up the repository
 echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/debian \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
   $(cat /etc/os-release | grep VERSION_CODENAME | cut -d= -f2 | tr -d '\"') stable" | \
   tee /etc/apt/sources.list.d/docker.list > /dev/null
 

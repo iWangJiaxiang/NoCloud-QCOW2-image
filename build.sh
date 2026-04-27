@@ -8,7 +8,7 @@ OUTPUT_DIR="release"
 
 echo "=> Downloading Debian 13 NoCloud QCOW2 image..."
 if [ ! -f "${QCOW_IMG}" ]; then
-  wget -q --show-progress "${QCOW_URL}" -O "${QCOW_IMG}"
+  wget -q "${QCOW_URL}" -O "${QCOW_IMG}"
 else
   echo "=> Image already exists, skipping download."
 fi

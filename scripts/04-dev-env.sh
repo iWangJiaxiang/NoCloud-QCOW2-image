@@ -23,7 +23,7 @@ chmod +x /etc/profile.d/uv-env.sh
 
 # Node.js
 echo "=> Installing Node.js"
-curl -fsSL https://mirrors.tuna.tsinghua.edu.cn/nodesource/deb_20.x/setup_20.x | bash -
+curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
 apt-get install -y nodejs
 
 # Set npm mirror
@@ -31,8 +31,6 @@ npm config set registry https://registry.npmmirror.com -g
 
 # Rust
 echo "=> Installing Rust"
-export RUSTUP_DIST_SERVER="https://mirrors.tuna.tsinghua.edu.cn/rustup"
-export RUSTUP_UPDATE_ROOT="https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 # Link to /usr/local/bin so it's globally available
