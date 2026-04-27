@@ -17,11 +17,13 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libguestfs-tools qemu-utils wget curl
+          sudo apt-get install -y libguestfs-tools qemu-utils wget curl linux-image-generic
 
       - name: Build QCOW2 Image
+        env:
+          LIBGUESTFS_BACKEND: direct
         run: |
-          bash build.sh
+          sudo -E bash build.sh
           
       - name: Extract Date and Time for Release
         id: time
