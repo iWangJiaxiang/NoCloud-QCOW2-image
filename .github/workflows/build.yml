@@ -1,0 +1,39 @@
+name: Build Custom Debian QCOW2
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libguestfs-tools qemu-utils wget curl
+
+      - name: Build QCOW2 Image
+        run: |
+          bash build.sh
+          
+      - name: Extract Date and Time for Release
+        id: time
+        run: echo "date=$(date +'%Y-%m-%d-%H-%M')" >> $GITHUB_OUTPUT
+          
+      - name: Create Release and Upload Asset
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "v${{ steps.time.outputs.date }}"
+          name: "Debian 13 NVMe/NoCloud Vibecoding Edition (${{ steps.time.outputs.date }})"
+          files: release/debian-13-nocloud-amd64.qcow2
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
