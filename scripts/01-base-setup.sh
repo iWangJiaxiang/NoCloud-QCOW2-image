@@ -9,10 +9,7 @@ echo "# disables OS prober to avoid loopback detection which breaks booting" >> 
 echo "GRUB_DISABLE_OS_PROBER=true" >> /etc/default/grub
 update-grub
 
-# Enable root login and password authentication in sshd
-echo "=> Configuring SSH"
-sed -i 's/^#\?\s*PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config
-sed -i 's/^#\?\s*PasswordAuthentication.*/PasswordAuthentication yes/' /etc/ssh/sshd_config
+
 
 # Set NTP to Aliyun
 echo "=> Configuring NTP"
