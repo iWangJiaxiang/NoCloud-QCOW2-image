@@ -1,0 +1,1 @@
+# NoCloud-QCOW2-image
