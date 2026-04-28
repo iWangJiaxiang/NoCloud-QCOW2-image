@@ -49,7 +49,7 @@ sudo apt install libguestfs-tools qemu-utils wget curl
 bash build.sh
 ```
 
-整个过程会自动下载最新的 Debian QCOW2 镜像文件、应用构建补丁列表并输出至 `release/debian-13-nocloud-amd64.qcow2`。
+整个过程会自动下载最新的 Debian QCOW2 镜像文件、应用构建补丁列表并输出至 `release/debian-13-nocloud-amd64.qcow2.xz`。
 
 ### GitHub Actions 自动化云端构建
 本库中自带了 `.github/workflows/build.yml` 的持续集成文件。
@@ -57,12 +57,13 @@ bash build.sh
 1. Fork 本仓库到你的账号下。
 2. 转到 **Actions** 分页内并开启 Workflow 执行权限。
 3. 点击 **Build Custom Debian QCOW2** 选择运行！
-构建成功后，在代码库的 **Release** 中即可自动获得最终打包好的 `.qcow2` 文件供你无限重用。
+构建成功后，在代码库的 **Release** 中即可自动获得最终打包好的 `.qcow2.xz` 文件供你无限重用。
 
 ## 如何使用
 
-生成的 `debian-13-nocloud-amd64.qcow2` 可直接作为普通系统的引导盘插入你的虚拟机管理器中：
+生成的 `debian-13-nocloud-amd64.qcow2`（需要先解压）可直接作为普通系统的引导盘插入你的虚拟机管理器中：
 
+0. 从 Github 下载 `debian-13-nocloud-amd64.qcow2.xz` 文件并解压即可得到 `.qcow2` 文件。建议在 Linux 或 macOS 下可直接通过 `xz -d debian-13-nocloud-amd64.qcow2.xz` 命令解压，Windows 用户可以使用 7-Zip 等工具。
 1. 挂载 QCOW2 镜像并启动虚拟机。
 2. 用户名填写 `root`。
 3. 密码直接输入 `root`。

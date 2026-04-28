@@ -38,6 +38,8 @@ jobs:
           LIBGUESTFS_BACKEND: direct
         run: |
           sudo -E bash build.sh
+          # Compress to bypass GitHub's 2GB file limit
+          sudo xz -v -T0 release/debian-13-nocloud-amd64.qcow2
           
       - name: Extract Date and Time for Release
         id: time
@@ -48,7 +50,7 @@ jobs:
         with:
           tag_name: "v${{ steps.time.outputs.date }}"
           name: "Debian 13 NVMe/NoCloud Vibecoding Edition (${{ steps.time.outputs.date }})"
-          files: release/debian-13-nocloud-amd64.qcow2
+          files: release/debian-13-nocloud-amd64.qcow2.xz
           draft: false
           prerelease: false
         env:
