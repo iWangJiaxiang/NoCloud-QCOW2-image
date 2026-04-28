@@ -36,4 +36,9 @@ EOF
 # Enable Docker
 systemctl enable docker
 
+# Clean up space
+apt-get -qq -y autoremove --purge || true
+apt-get -qq -y clean || true
+rm -rf /tmp/* /var/tmp/*
+
 echo "=> Docker Installation completed."

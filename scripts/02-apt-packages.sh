@@ -27,4 +27,9 @@ if [ -f /etc/ssh/sshd_config ]; then
   grep -q "^PasswordAuthentication yes" /etc/ssh/sshd_config || echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
 fi
 
+# Clean up space
+apt-get -qq -y autoremove --purge || true
+apt-get -qq -y clean || true
+rm -rf /tmp/* /var/tmp/*
+
 echo "=> Apt Packages Installation completed."

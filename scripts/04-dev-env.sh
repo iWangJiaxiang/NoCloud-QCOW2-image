@@ -53,4 +53,9 @@ npm config set registry https://registry.npmmirror.com -g
 # # registry = "https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git"
 # # EOF
 
+# Clean up space
+apt-get -qq -y autoremove --purge || true
+apt-get -qq -y clean || true
+rm -rf /tmp/* /var/tmp/* ~/.cache/uv
+
 echo "=> Development Environments Setup completed."
