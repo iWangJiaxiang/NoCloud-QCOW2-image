@@ -11,13 +11,13 @@
   - Debian 基础库与安全库替换为 Tuna 镜像。
   - Docker CE 预配国内下载源并植入国内注册表镜像 (`daemon.json`)。
   - Node.js 及 npm 统一采用镜像源 (`npmmirror.com`, NodeSource from Tuna)。
-  - Rustup/Cargo 全环境换用 Tuna 源。
+  <!-- - Rustup/Cargo 全环境换用 Tuna 源。 -->
   - Python UV 包管理器配置 `pypi.tuna.tsinghua.edu.cn/simple` 代理。
 - **现代化 Vibecoding 预置栈**:
   - `Docker` + `Docker Compose`: 快速启停 AI 容器或服务。
   - `Python UV`: 极速的多合一 Python 环境管理。
   - `Node.js 20.x`: 提供前端与 JavaScript 环境基础。
-  - `Rust`: 原生编译级基础设施。
+  <!-- - `Rust`: 原生编译级基础设施。 -->
   - `OpenCode`: 预装 anomalyco 提供的强大开源 TUI 终端 AI 编程 Agent。
   - `增强型基建`: 将 `tmux`, `git`, `zsh`, `jq`, `vim`, `htop`, `fail2ban`, `qemu-guest-agent` 等纳入基建环境，告别安装依赖烦恼。
 - **安全防冲突设计**:

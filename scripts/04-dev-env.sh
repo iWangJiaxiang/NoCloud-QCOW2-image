@@ -29,28 +29,28 @@ apt-get -qq install -y nodejs
 # Set npm mirror
 npm config set registry https://registry.npmmirror.com -g
 
-# Rust
-echo "=> Installing Rust"
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-
-# Link to /usr/local/bin so it's globally available
-find /root/.cargo/bin -type f -exec ln -s {} /usr/local/bin/ \;
-
-cat > /etc/profile.d/rust-env.sh <<EOF
-export RUSTUP_DIST_SERVER="https://mirrors.tuna.tsinghua.edu.cn/rustup"
-export RUSTUP_UPDATE_ROOT="https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup"
-export PATH="\$PATH:/root/.cargo/bin"
-EOF
-chmod +x /etc/profile.d/rust-env.sh
-
-# Configure Cargo directly for root user and global setting
-mkdir -p /root/.cargo
-cat > /root/.cargo/config.toml <<EOF
-[source.crates-io]
-replace-with = 'tuna'
-
-[source.tuna]
-registry = "https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git"
-EOF
+# # Rust
+# # echo "=> Installing Rust"
+# # curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+# 
+# # # Link to /usr/local/bin so it's globally available
+# # find /root/.cargo/bin -type f -exec ln -s {} /usr/local/bin/ \;
+# 
+# # cat > /etc/profile.d/rust-env.sh <<EOF
+# # export RUSTUP_DIST_SERVER="https://mirrors.tuna.tsinghua.edu.cn/rustup"
+# # export RUSTUP_UPDATE_ROOT="https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup"
+# # export PATH="\$PATH:/root/.cargo/bin"
+# # EOF
+# # chmod +x /etc/profile.d/rust-env.sh
+# 
+# # # Configure Cargo directly for root user and global setting
+# # mkdir -p /root/.cargo
+# # cat > /root/.cargo/config.toml <<EOF
+# # [source.crates-io]
+# # replace-with = 'tuna'
+# 
+# # [source.tuna]
+# # registry = "https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git"
+# # EOF
 
 echo "=> Development Environments Setup completed."
