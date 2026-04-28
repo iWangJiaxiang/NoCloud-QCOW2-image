@@ -24,7 +24,7 @@ chmod +x /etc/profile.d/uv-env.sh
 # Node.js
 echo "=> Installing Node.js"
 curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
-apt-get install -y nodejs
+apt-get -qq install -y nodejs
 
 # Set npm mirror
 npm config set registry https://registry.npmmirror.com -g

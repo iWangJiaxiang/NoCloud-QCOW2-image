@@ -3,8 +3,8 @@ set -e
 
 echo "=> [6/6] Cleanup"
 
-apt-get -y autoremove --purge
-apt-get -y clean
+apt-get -qq -y autoremove --purge
+apt-get -qq -y clean
 
 rm -f /var/log/*.log
 rm -rf /var/lib/apt/lists/*

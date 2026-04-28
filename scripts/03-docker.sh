@@ -4,8 +4,8 @@ set -e
 echo "=> [3/6] Docker Installation"
 
 # Install prerequisites
-apt-get update
-apt-get -y install ca-certificates curl gnupg
+apt-get update -qq
+apt-get -qq -y install ca-certificates curl gnupg
 
 # Add Docker's official GPG key
 install -m 0755 -d /etc/apt/keyrings
@@ -19,8 +19,8 @@ echo \
   tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 # Install Docker Engine
-apt-get update
-apt-get -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+apt-get update -qq
+apt-get -qq -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # Configure Docker Registry Mirrors
 mkdir -p /etc/docker
