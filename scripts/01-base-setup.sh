@@ -15,6 +15,8 @@ update-grub
 echo "=> Configuring NTP"
 echo "NTP=ntp.aliyun.com" >> /etc/systemd/timesyncd.conf
 
-
+# Enable systemd-growfs for the root partition
+echo "=> Enabling systemd-growfs"
+awk '$2 == "/" && $4 !~ /x-systemd.growfs/ { $4 = $4 ",x-systemd.growfs" } 1' /etc/fstab > /tmp/fstab.tmp && mv /tmp/fstab.tmp /etc/fstab
 
 echo "=> Base System Setup completed."
